@@ -11,6 +11,7 @@
 ## http://localhost:8080/products/1
 
 - Devuelve el producto con el id = 1
+- Puede probarse con los 20 id distintos
 
 ## http://localhost:8080/products?limit=5
 
