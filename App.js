@@ -2,9 +2,9 @@ const express = require("express")
 const app = express()
 const router = require("./src/routes/router")
 
-const ProductManager = require("./src/ProductManager")
+// const ProductManager = require("./src/ProductManager")
 
-const productManager = new ProductManager("./src/JSON/products.json")
+// const productManager = new ProductManager("./src/JSON/products.json")
 app.use(express.json())
 app.use("/", router)
 app.listen(8080, () => {console.log("Aplicación funcionando en el puerto 8080")})

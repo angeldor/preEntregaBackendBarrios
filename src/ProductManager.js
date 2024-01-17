@@ -85,8 +85,7 @@ class ProductManager {
 }
 
 // Uso de la clase ProductManager
-module.exports = new ProductManager
-// ("./JSON/products.json");
+module.exports = new ProductManager("./JSON/products.json")
 
 // productManager = new ProductManager("./JSON/products.json");
 
