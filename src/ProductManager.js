@@ -85,50 +85,10 @@ class ProductManager {
 }
 
 // Uso de la clase ProductManager
-module.exports = new ProductManager("./products.json");
+module.exports = new ProductManager
+// ("./JSON/products.json");
 
-productManager = new ProductManager("./products.json");
+// productManager = new ProductManager("./JSON/products.json");
 
-console.log(productManager.getProductById(2));
+// console.log(productManager.getProductById(3));
 
-// Ejemplos de uso
-// console.log("Initial Products:", productManager.getProducts());
-
-// const newProduct = productManager.addProduct({
-//   title: "New Product",
-//   description: "This is a new product",
-//   price: 150,
-//   image: "New Image",
-//   code: "new123",
-//   stock: 10,
-// });
-
-// console.log("Products after adding a new product:", productManager.getProducts());
-
-// try {
-//   const retrievedProduct = productManager.getProductById(newProduct.id);
-//   console.log("Retrieved Product:", retrievedProduct);
-// } catch (error) {
-//   console.error(error.message);
-// }
-
-// try {
-//   const updatedProduct = productManager.updateProduct(newProduct.id, {
-//     price: 180,
-//     stock: 15,
-//   });
-//   console.log("Updated Product:", updatedProduct);
-// } catch (error) {
-//   console.error(error.message);
-// }
-
-// console.log("Products after updating a product:", productManager.getProducts());
-
-// try {
-//   productManager.deleteProduct(newProduct.id);
-//   console.log("Product deleted successfully.");
-// } catch (error) {
-//   console.error(error.message);
-// }
-
-// console.log("Products after deleting a product:", productManager.getProducts());

@@ -1,9 +1,14 @@
-const productManager = require("./src/ProductManager");
-import "./src/ProductManager";
-const express = require("express");
-const app = express();
+const express = require("express")
+const app = express()
+const router = require("./src/routes/router")
 
-app.use(express.json());
+const ProductManager = require("./src/ProductManager")
+
+const productManager = new ProductManager("./src/JSON/products.json")
+app.use(express.json())
+app.use("/", router)
+app.listen(8080, () => {console.log("Aplicación funcionando en el puerto 8080")})
+
 // app.get("/ping", (req, res) => {
 //   res.send("pong");
 // });
@@ -25,7 +30,7 @@ app.use(express.json());
 //   res.send(productos);
 // });
 
-// app.get("/products/:id", (req, res) => {
+// app.get("/product/:id", (req, res) => {
 //   const productId = req.params.id;
 
 //   const product = productManager.getProductById(productId);
@@ -38,6 +43,4 @@ app.use(express.json());
 //   }
 // });
 
-app.listen(8080, () => {
-  console.log("Aplicación funcionando en el puerto 8080");
-});
+
