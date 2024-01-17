@@ -1,13 +1,12 @@
-const express = require("express")
-const app = express()
-const router = require("./src/routes/router")
+const express = require("express");
+const app = express();
+const router = require("./router");
 
-// const ProductManager = require("./src/ProductManager")
-
-// const productManager = new ProductManager("./src/JSON/products.json")
-app.use(express.json())
-app.use("/", router)
-app.listen(8080, () => {console.log("Aplicación funcionando en el puerto 8080")})
+app.use(express.json());
+app.use("/", router);
+app.listen(8080, () => {
+  console.log("Aplicación funcionando en el puerto 8080");
+});
 
 // app.get("/ping", (req, res) => {
 //   res.send("pong");
@@ -42,5 +41,3 @@ app.listen(8080, () => {console.log("Aplicación funcionando en el puerto 8080")
 //     res.status(404).send("Error 404: Producto no encontrado");
 //   }
 // });
-
-

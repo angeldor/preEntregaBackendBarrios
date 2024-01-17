@@ -1,0 +1,50 @@
+{
+  "1": {
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 2
+      },
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ],
+    "total": 2550
+  },
+  "2": {
+    "items": [
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ],
+    "total": 150
+  },
+  "3": {
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 2
+      },
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ],
+    "total": 2550
+  },
+  "4": {
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 2
+      },
+      {
+        "productId": 2,
+        "quantity": 1
+      }
+    ],
+    "total": 2550
+  }
+}
