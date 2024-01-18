@@ -278,20 +278,5 @@
       "antenna6_1.jpg",
       "antenna6_2.jpg"
     ]
-  },
-  {
-    "id": 21,
-    "title": "Ejemplo de Producto",
-    "description": "Este es un producto de ejemplo",
-    "price": 29.99,
-    "image": "imagen.jpg",
-    "code": "ABC123",
-    "stock": 50,
-    "status": true,
-    "category": "Electrónica",
-    "thumbnails": [
-      "ruta1.jpg",
-      "ruta2.jpg"
-    ]
   }
 ]

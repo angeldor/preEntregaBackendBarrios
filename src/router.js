@@ -1,10 +1,7 @@
 const express = require("express");
 const { productManager, cartManager } = require("./ProductManager");
-const bodyParser = require("body-parser");
 
 const router = express.Router();
-
-router.use(bodyParser.json());
 
 router.get("/ping", (req, res) => {
   res.send("pong");
@@ -39,17 +36,31 @@ router.post("/", (req, res) => {
   }
 });
 
-router.put("/products/:id",(req, res) => {
-  const productId = parseInt(req.params.id, 10)
-  const updatedFields = req.body
+router.put("/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+  const updatedFields = req.body;
 
-  try{
-    const updatedProduct = productManager.updateProduct(productId, updatedFields)
-    res.send(updatedProduct)
-  }catch (error){
-    res.status(404).send(`Error 404: ${error.message}`)
+  try {
+    const updatedProduct = productManager.updateProduct(
+      productId,
+      updatedFields
+    );
+    res.send(updatedProduct);
+  } catch (error) {
+    res.status(404).send(`Error 404: ${error.message}`);
   }
-})
+});
+
+router.delete("/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+
+  try {
+    productManager.deleteProduct(productId);
+    res.send(`Product with ID ${productId} deleted successfully.`);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
 router.get("/products", (req, res) => {
   //Entrada de datos
   let productos = productManager.getProducts();
@@ -86,17 +97,37 @@ router.get("/carts", (req, res) => {
 
   res.send(carritos);
 });
-//Por alguna razon no logro la ruta localhost:8080/cart/:id
-//Si lo llamo desde un console.log un id especifico funciona pero si lo pido por una variable me devuelve undefined
-router.get("/cart/:id", (req, res) => {
-  let cartid = req.params.id;
 
-  let cart = productManager.getCart(cartid);
+router.post("/carts", (req, res) => {
+  try {
+    const newCartId = cartManager.createCart();
+    res.status(201).send({ id: newCartId, items: [], total: 0 });
+  } catch (error) {
+    res.status(500).send(`Error: ${error.message}`);
+  }
+})
+
+router.get("/carts/:cid", (req, res) => {
+  const cartId = parseInt(req.params.cid, 10);
+  const cart = cartManager.getCart(cartId);
 
   if (cart) {
     res.send(cart);
   } else {
-    res.status(404).send("Error 404, carrito no encontrado");
+    res.status(404).send(`Error 404: Cart with ID ${cartId} not found.`);
+  }
+});
+
+router.post("/carts/:cid/products/:pid", (req, res) => {
+  const cartId = parseInt(req.params.cid, 10);
+  const productId = parseInt(req.params.pid, 10);
+  const quantity = req.body.quantity || 1;
+
+  try {
+    cartManager.addToCart(cartId, productId, quantity);
+    res.send("Product added to cart successfully.");
+  } catch (error) {
+    res.status(400).send(`Error: ${error.message}`);
   }
 });
 

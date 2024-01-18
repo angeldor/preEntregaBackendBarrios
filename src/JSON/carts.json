@@ -78,9 +78,18 @@
       },
       {
         "productId": 2,
-        "quantity": 1
+        "quantity": 3
+      },
+      {
+        "productId": 20,
+        "quantity": 2
       }
     ],
-    "total": 2550
+    "total": 2949.93
+  },
+  {
+    "id": 7,
+    "items": [],
+    "total": 0
   }
 ]
