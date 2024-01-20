@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Time Products</title>
+</head>
+<body>
+  <!-- Lista de productos -->
+  <ul>
+    {{#each productos}}
+      <li>{{this.title}} - {{this.price}}</li>
+    {{/each}}
+  </ul>
+
+  <!-- Formulario para agregar productos -->
+  <form id="addProductForm">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="price">Precio:</label>
+    <input type="number" id="price" name="price" step="0.01" required>
+
+    <label for="code">Código:</label>
+    <input type="text" id="code" name="code" required>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" required>
+
+    <label for="category">Categoría:</label>
+    <input type="text" id="category" name="category" required>
+
+
+    <button type="submit">Agregar Producto</button>
+  </form>
+
+  <br>
+  <form id="deleteProductForm">
+    <label for="productId">ID del producto a eliminar:</label>
+    <input type="text" id="productId" name="productId" required>
+
+    <button type="submit">Eliminar Producto</button>
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+  <script>
+    const socket = io()
+
+    document.getElementById("addProductForm").addEventListener("submit", (event) => {
+      event.preventDefault()
+      const productName = document.getElementById("productName").value
+      // Envía datos al servidor para agregar un producto
+      socket.emit("addProduct", { productName })
+    });
+
+    document.getElementById("deleteProductForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const productId = document.getElementById("productId").value
+      // Envía datos al servidor para eliminar un producto
+      socket.emit("deleteProduct", { productId })
+    })
+
+    // Escucha eventos del servidor y actualiza la lista de productos
+    socket.on("newProduct", (data) => {
+        console.log("hello world")
+    })
+  </script>
+</body>
+</html>

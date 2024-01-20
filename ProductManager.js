@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { io } = require("./App")
 
 class ProductManager {
   constructor(filePath) {
@@ -63,6 +64,7 @@ class ProductManager {
     };
 
     this.products.push(newProduct);
+    io.emit("newProduct", {product: newProduct})
     this.saveProducts(); // Guardar cambios en el archivo
     return newProduct;
   }
